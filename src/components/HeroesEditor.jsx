@@ -21,10 +21,7 @@ class HeroesEditor extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        console.log(this.state);
-
-        this.props.onFormSubmit(this.state);
-
+          this.props.onFormSubmit(this.state);
 
         this.setState({ ...INITIAL_STATE });
     };

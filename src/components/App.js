@@ -2,31 +2,34 @@ import React, {Component} from 'react';
 import styles from './App.css';
 import HeroesList from './HeroesList'
 import HeroesEditor from './HeroesEditor'
-
 /*import heroeslist from '../heroesList'*/
 
-class App extends Component {
-    state = {
-        heroes: []
-    };
+const INITIAL_STATE = {
+    heroes: JSON.parse(localStorage.getItem('myAppDB'))
+};
 
-    componentDidMount() {
+
+class App extends Component {
+    state = {...INITIAL_STATE};
+
+/*    componentDidMount() {
         this.fetchAllHeroes();
     }
 
     fetchAllHeroes = () => {
         const heroesLocalStorage = JSON.parse(localStorage.getItem('myAppDB'));
-        console.log('heroesLocalStorage')
-        console.log(heroesLocalStorage)
         //this.setState({heroes: heroesLocalStorage});
         this.setState(state => ({
-            heroes: [...state.heroes, heroesLocalStorage]
+            heroes: [...heroesLocalStorage]
         }));
-    };
+    };*/
 
     addHeroeToList = () => {
-        const myAppDBasString = {...this.state.heroes}
+        const [...myAppDBasString] = this.state.heroes;
+        console.log(this.state.heroes)
+        localStorage.removeItem('myAppDB');
         localStorage.setItem('myAppDB', JSON.stringify(myAppDBasString))
+
     };
 
     addHeroe = heroe => {
@@ -38,10 +41,10 @@ class App extends Component {
 
 
     render() {
-        //const heroes = {...this.state.heroes}
+        const heroes = [...this.state.heroes];
         return (
             <div className={styles.appHolder}>
-                <HeroesList heroes={this.state.heroes}/>
+                <HeroesList heroes={heroes}/>
                 <HeroesEditor onFormSubmit={this.addHeroe}/>
             </div>
         );
