@@ -1,0 +1,31 @@
+.list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0;
+    max-width: 800px;
+    min-width: 205px;
+    width: 800px;
+    margin-left: 20px;
+    padding: 40px;
+    padding-top: 10px;
+ }
+
+.listItem {
+    width: 200px;
+    display: inline-block;
+    margin: 20px;
+}
+
+.listHolder {
+    display: inline-block;
+}
+
+h3 {
+    text-align: center;
+    padding: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
