@@ -49,7 +49,7 @@ class App extends Component {
         const heroes = [...this.state.heroes];
         return (
             <div className={styles.appHolder}>
-                <HeroesList heroes={heroes}/>
+                <HeroesList heroes={heroes} onDelete={this.deleteHeroe}/>
                 <HeroesEditor onFormSubmit={this.addHeroe}/>
             </div>
         );

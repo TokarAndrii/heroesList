@@ -36,6 +36,7 @@ class Hero extends Component {
     render() {
         const {listDetailsShow} = this.state;
         const {name, strength, intelligence, speed} = this.props;
+        console.log(this.props)
 
         return (
             <div className={styles.hero}>

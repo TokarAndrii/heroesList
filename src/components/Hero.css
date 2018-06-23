@@ -11,6 +11,12 @@
     width: 200px;
 }
 
+.header:hover {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    color: darkorange;
+}
+
 .listItem {
     text-align: center;
     font-size: 1rem;
