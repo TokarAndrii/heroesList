@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './Hero.css'
 
 
+
 /*const Hero = ({name, strength, intelligence, speed}) => {*/
 
 const INITIAL_STATE = {
@@ -11,13 +12,17 @@ const INITIAL_STATE = {
 
 class Hero extends Component {
     static propTypes = {
+        id:PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
         strength: PropTypes.string.isRequired,
         intelligence: PropTypes.string.isRequired,
         speed: PropTypes.string.isRequired
     };
 
+
     state = {...INITIAL_STATE};
+
+
 
 
     toogleShowList = () => {
@@ -44,13 +49,11 @@ class Hero extends Component {
                         <li className={styles.listItem}>speed: <span className={styles.listItemSpan}>{speed}</span></li>
                     </ul>
                 ) : null}
-
-
                 <div className={styles.iconsHolder}>
-                    <a className={styles.icon}><i class="fas fa-edit"></i></a>
-                    <a className={styles.icon}><i class="fas fa-trash-alt"></i></a>
-                    <a className={styles.icon}><i class="fas fa-users"></i></a>
-                    <a className={styles.icon} onClick={this.toogleShowList}><i class="fas fa-info-circle"></i></a>
+                    <a className={styles.icon}><i className="fas fa-edit"></i></a>
+                    <a className={styles.icon} onClick={this.props.onDelete}><i className="fas fa-trash-alt"></i></a>
+                    <a className={styles.icon}><i className="fas fa-users"></i></a>
+                    <a className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></a>
                 </div>
             </div>
 
@@ -59,7 +62,5 @@ class Hero extends Component {
     }
 }
 
-
-//};
 
 export default Hero

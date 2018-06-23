@@ -9,7 +9,7 @@ const HeroesList = ({heroes, ...props}) => (
         <ul className={styles.list}>
             {heroes.map(hero => (
                 <li key={hero.id} className={styles.listItem}>
-                    <Hero {...hero} {...props} />
+                    <Hero {...hero} {...props}/>
                 </li>
             ))}
         </ul>

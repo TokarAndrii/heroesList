@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import Input from './shared/Input'
 import Button from './shared/Button'
 import styles from './HeroesEditor.css'
+import { v4 } from "uuid"
+
 
 const INITIAL_STATE = {
+    id: v4(),
     name: '',
     strength: '',
     intelligence: '',
