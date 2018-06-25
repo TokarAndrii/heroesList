@@ -2,12 +2,6 @@ import React, {Component} from 'react';
 import styles from './App.css';
 import HeroesList from './HeroesList'
 import HeroesEditor from './HeroesEditor'
-/*import heroeslist from '../heroesList'*/
-
-
-/*const INITIAL_STATE = {
-    heroes: JSON.parse(localStorage.getItem('myAppDB'))
-};*/
 
 
 class App extends Component {
@@ -24,7 +18,6 @@ class App extends Component {
 
 
     writeToLocalStorage = () => {
-        //localStorage.setItem('myAppDB', JSON.stringify(this.state.heroes))
         localStorage.setItem('myAppDB', JSON.stringify({
             heroes: this.state.heroes
         }))
@@ -32,16 +25,16 @@ class App extends Component {
 
     addHeroe = heroe => {
         this.setState(state => ({
-            heroes: [...state.heroes, heroe]
+            heroes: [...state.heroes,heroe]
         }), this.writeToLocalStorage);
     };
 
     deleteHeroe = heroe => {
-        this.setState(state => ({
-            heroes: state.heroes.filter(index => {
-                index !== heroe
-            })
-        }), this.writeToLocalStorage)
+        this.setState(state=>({
+            heroes: state.heroes.filter(index=>index.id!==heroe.id)
+        }),this.writeToLocalStorage)
+
+
     };
 
 

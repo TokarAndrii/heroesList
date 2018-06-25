@@ -5,19 +5,13 @@ import App from './components/App';
 import heroesListStart from '../src/heroesList'
 
 
-const data = localStorage.getItem('myAppDB');
-//init DB
-console.log(data)
-
-
+const data = localStorage.getItem('myAppDB');//init DB
 if (!data) {
     localStorage.setItem('myAppDB', JSON.stringify({
         heroes: heroesListStart
-    }))
+    }));
     console.log(data)
 }
-
-
 
 
 ReactDOM.render(<App/>, document.getElementById('root'));
