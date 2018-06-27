@@ -30,6 +30,10 @@ class Hero extends Component {
     handleDelete = () => {
         this.props.onDelete({...this.props});
     };
+    handleUpdate = () => {
+        this.props.onUpdate({...this.props});
+    };
+
 
 
     render() {
@@ -50,7 +54,7 @@ class Hero extends Component {
                     </ul>
                 ) : null}
                 <div className={styles.iconsHolder}>
-                    <a className={styles.icon}><i className="fas fa-edit"></i></a>
+                    <a className={styles.icon} onClick={this.handleUpdate}><i className="fas fa-edit"></i></a>
                     <a className={styles.icon} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></a>
                     <a className={styles.icon}><i className="fas fa-users"></i></a>
                     <a className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></a>
