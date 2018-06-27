@@ -1,0 +1,19 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    margin-left: 30px;
+}
+
+.holder {
+    display: inline-block;
+    width: 200px;
+}
+
+h3 {
+    text-align: center;
+}
+
+

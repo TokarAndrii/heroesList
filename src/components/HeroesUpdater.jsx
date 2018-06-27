@@ -1,19 +1,18 @@
 import React, { Component } from 'react';
 import Input from './shared/Input'
 import Button from './shared/Button'
-import styles from './HeroesEditor.css'
-import { v4 } from "uuid"
-
+import styles from './HeroesUpdater.css'
 
 const INITIAL_STATE = {
-    id: v4(),
+    id: '',
     name: '',
     strength: '',
     intelligence: '',
     speed: '',
 };
 
-class HeroesEditor extends Component {
+class HeroesUpdater extends Component {
+    /*idHeroe = this.props.id;*/
 
     handleInputChange = e => {
         const name = e.target.name;
@@ -24,7 +23,9 @@ class HeroesEditor extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-          this.props.onFormSubmit(this.state);
+        //this.setState({id: this.idHeroe})
+
+        this.props.onFormSubmit(this.state);
 
         this.setState({ ...INITIAL_STATE });
     };
@@ -35,7 +36,7 @@ class HeroesEditor extends Component {
 
     render() {
         const {name, strength, intelligence, speed} = this.state;
-        const {buttonText, title} = this.props;
+        const {buttonText, title,} = this.props;
         return (
             <div className={styles.holder}>
                 <h3>{title}</h3>
@@ -57,4 +58,4 @@ class HeroesEditor extends Component {
     }
 }
 
-export default HeroesEditor
+export default HeroesUpdater

@@ -56,21 +56,22 @@ class App extends Component {
         }), this.writeToLocalStorage)
     };
 
-    updateHeroe = heroe => {
-        console.log('app heroe current - ', heroe);
 
-/*        this.setState(state => ({
-            heroes: state.heroes.map(index => (index.id === heroe.id ? heroe : index))
-        }), this.writeToLocalStorage)*/
+    updateHeroe = heroe => {
+        console.log("heroe.id",heroe.id);
+        this.setState(state => ({
+            heroes: state.heroes.map(index => index.id !== heroe.id ? index : heroe)
+        }), this.writeToLocalStorage)
     };
 
 
     render() {
         const heroes = [...this.state.heroes];
-        const {isModalOpen} = this.state
+        const {isModalOpen} = this.state;
         return (
             <div className={styles.appHolder}>
-                <Appbar><Button text="Create Heroe" onClick={this.handleOpenModal} className={styles.createHeroBtn}/></Appbar>
+                <Appbar><Button text="Create Heroe" onClick={this.handleOpenModal}
+                                className={styles.createHeroBtn}/></Appbar>
                 <HeroesList heroes={heroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>
 
                 <Modal
@@ -80,7 +81,7 @@ class App extends Component {
                     style={customStyles}
                     contentLabel="Modal Window">
 
-                    <HeroesEditor onFormSubmit={this.addHeroe}/>
+                    <HeroesEditor onFormSubmit={this.addHeroe} buttonText="Add" title="Heroes create form"/>
                     <button onClick={this.handleCloseModal} className={styles.closeBtn}>X</button>
                 </Modal>
             </div>
