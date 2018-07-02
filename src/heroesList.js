@@ -43,4 +43,47 @@ export default [
         intelligence: '9',
         speed: '8',
     },
+    {
+        id: v4(),
+        name: 'Super Man',
+        strength: '6',
+        intelligence: '10',
+        speed: '9',
+    },
+    {
+        id: v4(),
+        name: 'Dynamit',
+        strength: '10',
+        intelligence: '6',
+        speed: '8',
+    },
+    {
+        id: v4(),
+        name: 'Iron Man',
+        strength: '9',
+        intelligence: '5',
+        speed: '7',
+    },
+    {
+        id: v4(),
+        name: 'Black Widow',
+        strength: '9',
+        intelligence: '5',
+        speed: '6',
+    },
+    {
+        id: v4(),
+        name: 'Wonder Woman',
+        strength: '7',
+        intelligence: '10',
+        speed: '10',
+    },
+    {
+        id: v4(),
+        name: 'Doctor Manhattan',
+        strength: '7',
+        intelligence: '10',
+        speed: '8',
+    },
+
 ];

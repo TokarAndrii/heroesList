@@ -6,6 +6,7 @@ import Modal from 'react-modal'
 import Button from './shared/Button'
 import Appbar from './shared/appbar/index'
 import Heroesfilter from './Heroesfilter'
+import SquadEditor from './SquadEditor'
 import {getVisibleHeroes} from '../utils/selectors'
 
 Modal.setAppElement('#root');
@@ -27,6 +28,7 @@ class App extends Component {
         heroes: [],
         isModalOpen: false,
         filter: '',
+        squadEditorIds: [],
     };
 
     handleOpenModal = () => this.setState({isModalOpen: true});
@@ -67,22 +69,30 @@ class App extends Component {
     };
 
     handleFilterChange = str => {
-        this.setState({ filter: str });
+        this.setState({filter: str});
+    };
+
+    handleSquadEditorAddBtnClick = (id) => {
+        this.setState(state=>({
+            squadEditorIds: [...state.squadEditorIds,id]
+        }))
     };
 
 
     render() {
         const heroes = [...this.state.heroes];
         const {isModalOpen, filter} = this.state;
-        const visibleHeroes = getVisibleHeroes(heroes,filter);
+        const visibleHeroes = getVisibleHeroes(heroes, filter);
         return (
             <div className={styles.appHolder}>
                 <Appbar>
-                    <Heroesfilter filter={filter} onFilterChange={this.handleFilterChange} className={styles.heroesFilter}/>
+                    <Heroesfilter filter={filter} onFilterChange={this.handleFilterChange}
+                                  className={styles.heroesFilter}/>
                     <Button text="Create Heroe" onClick={this.handleOpenModal} className={styles.createHeroBtn}/>
-                  </Appbar>
+                </Appbar>
                 {/*<HeroesList heroes={heroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>*/}
                 <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>
+                <SquadEditor squadEditorIds={[...this.state.squadEditorIds]}/>
 
                 <Modal
                     isOpen={isModalOpen}
