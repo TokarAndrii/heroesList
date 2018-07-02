@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 };
 
 class HeroesUpdater extends Component {
-    /*idHeroe = this.props.id;*/
+    state = {...INITIAL_STATE};
 
     handleInputChange = e => {
         const name = e.target.name;
@@ -23,20 +23,24 @@ class HeroesUpdater extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        //this.setState({id: this.idHeroe})
+        const heroe = {...this.state};
 
-        this.props.onFormSubmit(this.state);
+        const heroeId = this.props.id;
+
+        heroe.id = heroeId;
+
+        this.props.onFormSubmit(heroe);
 
         this.setState({ ...INITIAL_STATE });
     };
 
 
 
-    state = {...INITIAL_STATE};
+
 
     render() {
         const {name, strength, intelligence, speed} = this.state;
-        const {buttonText, title,} = this.props;
+        const {buttonText, title, } = this.props;
         return (
             <div className={styles.holder}>
                 <h3>{title}</h3>

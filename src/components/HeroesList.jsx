@@ -17,8 +17,8 @@ class HeroesList extends Component {
         this.props.onDelete(hero)
     };
 
-    onUpdate = (hero) => {
-        this.props.onUpdate(hero)
+    onUpdate = (heroe) => {
+        this.props.onUpdate(heroe)
     };
 
     render() {

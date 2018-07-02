@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types';
 import Modal from 'react-modal'
 import styles from './Hero.css'
-/*import HeroesUpdater from './HeroesUpdater'*/
-import HeroesEditor from './HeroesEditor'
+import HeroesUpdater from './HeroesUpdater'
+/*import HeroesEditor from './HeroesEditor'*/
 
 
 const INITIAL_STATE = {
@@ -52,7 +52,7 @@ class Hero extends Component {
     };
 
     handleUpdate = (heroe) => {
-        this.props.onUpdate({...this.props});
+        this.props.onUpdate(heroe);
         this.handleCloseModal();
     };
 
@@ -61,9 +61,7 @@ class Hero extends Component {
     render() {
         const {listDetailsShow, isModalOpen} = this.state;
         const {name, strength, intelligence, speed} = this.props;
-/*
-        const heroeId = {...this.props.id};
-*/
+        const id = this.props.id;
 
 
         return (
@@ -92,8 +90,8 @@ class Hero extends Component {
                     style={customStyles}
                     contentLabel="Modal Window">
 
-                   {/* <HeroesUpdater onFormSubmit={this.handleUpdate} buttonText="Update" title="Heroes update form"/>*/}
-                    <HeroesEditor onFormSubmit={this.handleUpdate} buttonText="Update" title="Heroes update form" />
+                    <HeroesUpdater onFormSubmit={this.handleUpdate} buttonText="Update" title="Heroes update form" id={id}/>
+                    {/*<HeroesEditor onFormSubmit={this.handleUpdate} buttonText="Update" title="Heroes update form" />*/}
 
                     <button onClick={this.handleCloseModal} className={styles.closeBtn}>X</button>
                 </Modal>

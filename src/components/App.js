@@ -58,9 +58,8 @@ class App extends Component {
 
 
     updateHeroe = heroe => {
-        console.log("heroe.id",heroe.id);
         this.setState(state => ({
-            heroes: state.heroes.map(index => index.id !== heroe.id ? index : heroe)
+            heroes: state.heroes.map(index => index.id === heroe.id ? {...heroe} : index )
         }), this.writeToLocalStorage)
     };
 
