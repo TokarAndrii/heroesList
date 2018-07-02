@@ -5,6 +5,8 @@ import HeroesEditor from './HeroesEditor'
 import Modal from 'react-modal'
 import Button from './shared/Button'
 import Appbar from './shared/appbar/index'
+import Heroesfilter from './Heroesfilter'
+import {getVisibleHeroes} from '../utils/selectors'
 
 Modal.setAppElement('#root');
 
@@ -24,6 +26,7 @@ class App extends Component {
     state = {
         heroes: [],
         isModalOpen: false,
+        filter: '',
     };
 
     handleOpenModal = () => this.setState({isModalOpen: true});
@@ -59,19 +62,27 @@ class App extends Component {
 
     updateHeroe = heroe => {
         this.setState(state => ({
-            heroes: state.heroes.map(index => index.id === heroe.id ? {...heroe} : index )
+            heroes: state.heroes.map(index => index.id === heroe.id ? heroe : index)
         }), this.writeToLocalStorage)
+    };
+
+    handleFilterChange = str => {
+        this.setState({ filter: str });
     };
 
 
     render() {
         const heroes = [...this.state.heroes];
-        const {isModalOpen} = this.state;
+        const {isModalOpen, filter} = this.state;
+        const visibleHeroes = getVisibleHeroes(heroes,filter);
         return (
             <div className={styles.appHolder}>
-                <Appbar><Button text="Create Heroe" onClick={this.handleOpenModal}
-                                className={styles.createHeroBtn}/></Appbar>
-                <HeroesList heroes={heroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>
+                <Appbar>
+                    <Heroesfilter filter={filter} onFilterChange={this.handleFilterChange} className={styles.heroesFilter}/>
+                    <Button text="Create Heroe" onClick={this.handleOpenModal} className={styles.createHeroBtn}/>
+                  </Appbar>
+                {/*<HeroesList heroes={heroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>*/}
+                <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>
 
                 <Modal
                     isOpen={isModalOpen}

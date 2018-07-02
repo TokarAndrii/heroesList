@@ -1,0 +1,34 @@
+.formFilter {
+
+    width: 500px;
+}
+
+.formFilter {
+    position: relative;
+}
+
+.inputFilter{
+    width: 90%;
+    height: 33px;
+    font-size: 1.3rem;
+    padding-left: 30px;
+    border-radius: 5px;
+}
+
+.inputFilter:hover {
+    background-color: linen;
+    color: #000088;
+}
+.filterIcon {
+    position: absolute;
+    top: 10px;
+    left: 18px;
+}
+
+.close{
+    position: absolute;
+    right: 20px;
+    top: 0px;
+    font-size: .8rem;
+    cursor: pointer;
+}
