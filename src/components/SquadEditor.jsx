@@ -3,15 +3,8 @@ import styles from './SquadEditor.css'
 import HeroesList from './HeroesList'
 import Button from './shared/Button'
 
-/*const INITIAL_STATE = {
-    listDetailsShow: false,
-    isModalOpen: false,
-    heroes: [],
-
-};*/
 
 class SquadEditor extends Component {
-    //state = {...INITIAL_STATE};
 
     handleClickSaveBtn = () => {
 
@@ -19,6 +12,22 @@ class SquadEditor extends Component {
 
     handleClickResetBtn = () => {
 
+    };
+
+    countTotalStrength = () => {
+        return this.props.countTotalStrength();
+    };
+
+    countTotalIntelligence = () => {
+
+    };
+
+    countTotalSpeed = () => {
+
+    };
+
+    onDelete = (hero) => {
+        return this.props.onDelete(hero)
     };
 
 
@@ -32,11 +41,16 @@ class SquadEditor extends Component {
                     <Button text="Reset Editor" onClick={this.handleClickResetBtn}/>
                 </div>
                 <div className={styles.totalInfoHolder}>
-                    <div className={styles.totalInfoHolderRow}>Strength total: <span className={styles.totals}>1</span></div>
-                    <div className={styles.totalInfoHolderRow}>Intelligence total: <span className={styles.totals}>1</span></div>
-                    <div className={styles.totalInfoHolderRow}>Speed total: <span className={styles.totals}>1</span></div>
+                    <div className={styles.totalInfoHolderRow}>Strength total: <span
+                        className={styles.totals}>{this.countTotalStrength()}</span>
+                    </div>
+                    <div className={styles.totalInfoHolderRow}>Intelligence total: <span
+                        className={styles.totals}>{this.countTotalIntelligence()}</span></div>
+                    <div className={styles.totalInfoHolderRow}>Speed total: <span
+                        className={styles.totals}>{this.countTotalSpeed()}</span>
+                    </div>
                 </div>
-                <HeroesList heroes={heroes} isActiveSquad={false} isActiveEdit={false}/>
+                <HeroesList heroes={heroes} isActiveSquad={false} isActiveEdit={false} onDelete={this.onDelete}/>
             </div>)
     }
 }

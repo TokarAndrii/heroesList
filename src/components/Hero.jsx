@@ -90,11 +90,7 @@ class Hero extends Component {
                     <div className={styles.icon}><A onClick={this.handleOpenModal} isActive={isActiveEdit}><i className="fas fa-edit"></i></A></div>
                     <div className={styles.icon}><A className={styles.icon} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></A></div>
                     <div className={styles.icon}><A className={styles.icon} onClick={this.handleSquadEditorAddBtnClick} isActive={isActiveSquad}><i className="fas fa-users"></i></A></div>
-                        <div className={styles.icon}><A className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></A></div>
-                    {/*<a className={styles.icon} onClick={this.handleOpenModal}><i className="fas fa-edit"></i></a>*/}
-{/*                    <a className={styles.icon} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></a>
-                    <a className={styles.icon} onClick={this.handleSquadEditorAddBtnClick}><i className="fas fa-users"></i></a>
-                    <a className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></a>*/}
+                    <div className={styles.icon}><A className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></A></div>
                 </div>
 
                 <Modal
@@ -105,9 +101,8 @@ class Hero extends Component {
                     contentLabel="Modal Window">
 
                     <HeroesUpdater onFormSubmit={this.handleUpdate} buttonText="Update" title="Heroes update form" id={id}/>
-                    {/*<HeroesEditor onFormSubmit={this.handleUpdate} buttonText="Update" title="Heroes update form" />*/}
-
                     <button onClick={this.handleCloseModal} className={styles.closeBtn}>X</button>
+
                 </Modal>
             </div>
         )

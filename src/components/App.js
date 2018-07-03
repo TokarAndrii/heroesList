@@ -7,7 +7,7 @@ import Button from './shared/Button'
 import Appbar from './shared/appbar/index'
 import Heroesfilter from './Heroesfilter'
 import SquadEditor from './SquadEditor'
-import {getAvailHeroes, getHeroesBySquadEditorIds,} from '../utils/selectors'
+import {getAvailHeroes, getHeroesBySquadEditorIds, getTotalStrength} from '../utils/selectors'
 
 
 Modal.setAppElement('#root');
@@ -63,6 +63,12 @@ class App extends Component {
         }), this.writeToLocalStorage)
     };
 
+    deleteHeroeFromSquadEditor = heroe => {
+        this.setState(state => ({
+            squadEditorIds: state.squadEditorIds.filter(index => index !== heroe.id)
+        }), this.writeToLocalStorage);
+    };
+
 
     updateHeroe = heroe => {
         this.setState(state => ({
@@ -78,6 +84,14 @@ class App extends Component {
         this.setState(state => ({
             squadEditorIds: [...state.squadEditorIds, heroe.id]
         }), this.writeToLocalStorage)
+    };
+
+    countTotalStrength = () => {
+        const heroes = [...this.state.heroes];
+        const squadEditorIds = [...this.state.squadEditorIds];
+        const heroesStrength = getHeroesBySquadEditorIds(heroes, squadEditorIds);
+        console.log(getTotalStrength(heroesStrength));
+        return getTotalStrength(heroesStrength);
     };
 
 
@@ -96,7 +110,8 @@ class App extends Component {
                 </Appbar>
                 <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}
                             handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
-                <SquadEditor heroes={squadEditorIdsHeroes}></SquadEditor>
+                <SquadEditor heroes={squadEditorIdsHeroes} onDelete={this.deleteHeroeFromSquadEditor}
+                             countTotalStrength={this.countTotalStrength}></SquadEditor>
 
                 <Modal
                     isOpen={isModalOpen}

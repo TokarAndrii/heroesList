@@ -14,7 +14,10 @@ export const getAvailHeroes = (heroes, filter, squadEditorIds) => {
 
         return heroesNotAtEditor && hasFilter;
     });
+};
 
+export const getTotalStrength = heroes=> {
+    return heroes.reduce((accum, hero)=>{return  accum+=+hero.strength},0)
 };
 
 
