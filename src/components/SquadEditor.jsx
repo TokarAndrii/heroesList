@@ -23,17 +23,19 @@ class SquadEditor extends Component {
 
 
     render() {
-        //const heroes = [...this.state.heroes];
-        const squadEditorIds = [...this.props.squadEditorIds];
+        const heroes = [...this.props.heroes];
         return (
             <div className={styles.squadsEditorHolder}>
                 <h3>Squad Editor</h3>
-                {/*<HeroesList heroes={heroes}/>*/}
-                <Button text="Save Squad" onClick={this.handleClickSaveBtn}/>
-                <Button text="Reset Editor" onClick={this.handleClickResetBtn}/>
+                <div className={styles.buttonHolder}>
+                    <Button text="Save Squad" onClick={this.handleClickSaveBtn}/>
+                    <Button text="Reset Editor" onClick={this.handleClickResetBtn}/>
+                </div>
+
                 <div>Strength total: 1</div>
                 <div>Intelligence total: 1</div>
                 <div>Speed total: 1</div>
+                <HeroesList heroes={heroes}/>
 
             </div>)
     }

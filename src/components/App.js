@@ -7,7 +7,8 @@ import Button from './shared/Button'
 import Appbar from './shared/appbar/index'
 import Heroesfilter from './Heroesfilter'
 import SquadEditor from './SquadEditor'
-import {getVisibleHeroes} from '../utils/selectors'
+import {getAvailHeroes, getHeroesBySquadEditorIds,} from '../utils/selectors'
+
 
 Modal.setAppElement('#root');
 
@@ -44,7 +45,8 @@ class App extends Component {
 
     writeToLocalStorage = () => {
         localStorage.setItem('myAppDB', JSON.stringify({
-            heroes: this.state.heroes
+            heroes: this.state.heroes,
+            squadEditorIds: this.state.squadEditorIds,
         }))
     };
 
@@ -72,17 +74,19 @@ class App extends Component {
         this.setState({filter: str});
     };
 
-    handleSquadEditorAddBtnClick = (id) => {
-        this.setState(state=>({
-            squadEditorIds: [...state.squadEditorIds,id]
-        }))
+    handleSquadEditorAddBtnClick = (heroe) => {
+        this.setState(state => ({
+            squadEditorIds: [...state.squadEditorIds, heroe.id]
+        }), this.writeToLocalStorage)
     };
 
 
     render() {
         const heroes = [...this.state.heroes];
         const {isModalOpen, filter} = this.state;
-        const visibleHeroes = getVisibleHeroes(heroes, filter);
+        const squadEditorIds = [...this.state.squadEditorIds];
+        const visibleHeroes = getAvailHeroes(heroes, filter, squadEditorIds);
+        const squadEditorIdsHeroes = getHeroesBySquadEditorIds(heroes, squadEditorIds);
         return (
             <div className={styles.appHolder}>
                 <Appbar>
@@ -90,9 +94,9 @@ class App extends Component {
                                   className={styles.heroesFilter}/>
                     <Button text="Create Heroe" onClick={this.handleOpenModal} className={styles.createHeroBtn}/>
                 </Appbar>
-                {/*<HeroesList heroes={heroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>*/}
-                <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}/>
-                <SquadEditor squadEditorIds={[...this.state.squadEditorIds]}/>
+                <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}
+                            handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
+                <SquadEditor heroes={squadEditorIdsHeroes}></SquadEditor>
 
                 <Modal
                     isOpen={isModalOpen}

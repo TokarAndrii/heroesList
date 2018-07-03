@@ -4,3 +4,10 @@
     width: 600px;
     list-style-type: none;
 }
+
+.buttonHolder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

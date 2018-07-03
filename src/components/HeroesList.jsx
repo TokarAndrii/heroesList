@@ -9,8 +9,9 @@ class HeroesList extends Component {
 
     static propTypes = {
         heroes: PropTypes.array.isRequired,
-        onDelete: PropTypes.func.isRequired,
-        onUpdate: PropTypes.func.isRequired,
+        onDelete: PropTypes.func,
+        onUpdate: PropTypes.func,
+        handleSquadEditorAddBtnClick: PropTypes.func,
     };
 
     onDelete = (hero) => {
@@ -19,6 +20,11 @@ class HeroesList extends Component {
 
     onUpdate = (heroe) => {
         this.props.onUpdate(heroe)
+    };
+
+    handleSquadEditorAddBtnClick = (heroe) => {
+        console.log('handleFilterChange from HeroesList ', heroe)
+        this.props.handleSquadEditorAddBtnClick(heroe);
     };
 
     render() {
@@ -31,7 +37,8 @@ class HeroesList extends Component {
                 <Masonry className={styles.list} elementType={'ul'}>
                     {heroes.map(hero => (
                         <li key={hero.id} className={styles.listItem}>
-                            <Hero {...hero} {...this.props} onDelete={this.onDelete} onUpdate={this.onUpdate}/>
+                            <Hero {...hero} {...this.props} onDelete={this.onDelete} onUpdate={this.onUpdate}
+                                  handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
                         </li>
                     ))}
                 </Masonry>
