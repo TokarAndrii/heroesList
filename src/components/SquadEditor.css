@@ -11,3 +11,18 @@
     justify-content: center;
     align-items: center;
 }
+
+.totalInfoHolder {
+    text-align: left;
+    padding-left: 40%;
+    margin: 26px 8px;
+}
+
+.totalInfoHolderRow {
+    margin-top: 8px;
+}
+
+.totals {
+    font-weight: bold;
+    font-size: 1.2rem;
+}

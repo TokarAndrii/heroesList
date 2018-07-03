@@ -31,12 +31,12 @@ class SquadEditor extends Component {
                     <Button text="Save Squad" onClick={this.handleClickSaveBtn}/>
                     <Button text="Reset Editor" onClick={this.handleClickResetBtn}/>
                 </div>
-
-                <div>Strength total: 1</div>
-                <div>Intelligence total: 1</div>
-                <div>Speed total: 1</div>
-                <HeroesList heroes={heroes}/>
-
+                <div className={styles.totalInfoHolder}>
+                    <div className={styles.totalInfoHolderRow}>Strength total: <span className={styles.totals}>1</span></div>
+                    <div className={styles.totalInfoHolderRow}>Intelligence total: <span className={styles.totals}>1</span></div>
+                    <div className={styles.totalInfoHolderRow}>Speed total: <span className={styles.totals}>1</span></div>
+                </div>
+                <HeroesList heroes={heroes} isActiveSquad={false} isActiveEdit={false}/>
             </div>)
     }
 }

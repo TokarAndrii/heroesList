@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from 'react-modal'
 import styles from './Hero.css'
 import HeroesUpdater from './HeroesUpdater'
-/*import HeroesEditor from './HeroesEditor'*/
+import A from './shared/A'
 
 
 const INITIAL_STATE = {
@@ -29,7 +29,11 @@ class Hero extends Component {
         name: PropTypes.string.isRequired,
         strength: PropTypes.string.isRequired,
         intelligence: PropTypes.string.isRequired,
-        speed: PropTypes.string.isRequired
+        speed: PropTypes.string.isRequired,
+        isActiveInfo: PropTypes.bool,
+        isActiveTrash: PropTypes.bool,
+        isActiveSquad: PropTypes.bool,
+        isActiveEdit: PropTypes.bool,
     };
 
 
@@ -57,7 +61,6 @@ class Hero extends Component {
     };
 
     handleSquadEditorAddBtnClick = () => {
-        console.log('handleFilterChange from Heroe ');
         this.props.handleSquadEditorAddBtnClick({...this.props});
     };
 
@@ -67,6 +70,8 @@ class Hero extends Component {
         const {listDetailsShow, isModalOpen} = this.state;
         const {name, strength, intelligence, speed} = this.props;
         const id = this.props.id;
+        const isActiveSquad = this.props.isActiveSquad;
+        const isActiveEdit = this.props.isActiveEdit;
 
 
         return (
@@ -82,10 +87,14 @@ class Hero extends Component {
                     </ul>
                 ) : null}
                 <div className={styles.iconsHolder}>
-                    <a className={styles.icon} onClick={this.handleOpenModal}><i className="fas fa-edit"></i></a>
-                    <a className={styles.icon} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></a>
+                    <div className={styles.icon}><A onClick={this.handleOpenModal} isActive={isActiveEdit}><i className="fas fa-edit"></i></A></div>
+                    <div className={styles.icon}><A className={styles.icon} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></A></div>
+                    <div className={styles.icon}><A className={styles.icon} onClick={this.handleSquadEditorAddBtnClick} isActive={isActiveSquad}><i className="fas fa-users"></i></A></div>
+                        <div className={styles.icon}><A className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></A></div>
+                    {/*<a className={styles.icon} onClick={this.handleOpenModal}><i className="fas fa-edit"></i></a>*/}
+{/*                    <a className={styles.icon} onClick={this.handleDelete}><i className="fas fa-trash-alt"></i></a>
                     <a className={styles.icon} onClick={this.handleSquadEditorAddBtnClick}><i className="fas fa-users"></i></a>
-                    <a className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></a>
+                    <a className={styles.icon} onClick={this.toogleShowList}><i className="fas fa-info-circle"></i></a>*/}
                 </div>
 
                 <Modal

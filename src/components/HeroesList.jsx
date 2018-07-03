@@ -12,6 +12,10 @@ class HeroesList extends Component {
         onDelete: PropTypes.func,
         onUpdate: PropTypes.func,
         handleSquadEditorAddBtnClick: PropTypes.func,
+        isActiveInfo: PropTypes.bool,
+        isActiveTrash: PropTypes.bool,
+        isActiveSquad: PropTypes.bool,
+        isActiveEdit: PropTypes.bool,
     };
 
     onDelete = (hero) => {
@@ -29,6 +33,8 @@ class HeroesList extends Component {
 
     render() {
         const heroes = ([...this.props.heroes]);
+        const isActiveSquad = this.props.isActiveSquad;
+        const isActiveEdit = this.props.isActiveEdit;
 
 
         return (
@@ -38,7 +44,8 @@ class HeroesList extends Component {
                     {heroes.map(hero => (
                         <li key={hero.id} className={styles.listItem}>
                             <Hero {...hero} {...this.props} onDelete={this.onDelete} onUpdate={this.onUpdate}
-                                  handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
+                                  handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}
+                                  isActiveSquad={isActiveSquad} isActiveEdit={isActiveEdit}/>
                         </li>
                     ))}
                 </Masonry>

@@ -1,0 +1,21 @@
+.icon {
+    margin: 13px;
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid transparent;
+}
+
+.icon:hover {
+    border: 1px solid blue;
+    border-radius: 5px;
+    color: darkblue;
+    background-color: lightyellow;
+}
+
+.active {
+    display: inline-block;
+}
+
+.notActive {
+    display: none;
+}
