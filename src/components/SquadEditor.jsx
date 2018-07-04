@@ -7,11 +7,13 @@ import Button from './shared/Button'
 class SquadEditor extends Component {
 
     handleClickSaveBtn = () => {
-
+        console.log('handleClickSavetBtn from SquadEditor');
+        this.props.handleClickSaveBtn();
     };
 
     handleClickResetBtn = () => {
-
+        console.log('handleClickResetBtn from SquadEditor')
+        this.props.handleClickResetBtn();
     };
 
     countTotalStrength = () => {
@@ -38,7 +40,7 @@ class SquadEditor extends Component {
                 <h3>Squad Editor</h3>
                 <div className={styles.buttonHolder}>
                     <Button text="Save Squad" onClick={this.handleClickSaveBtn}/>
-                    <Button text="Reset Editor" onClick={this.handleClickResetBtn}/>
+                    <Button text="Reset Squad" onClick={this.handleClickResetBtn}/>
                 </div>
                 <div className={styles.totalInfoHolder}>
                     <div className={styles.totalInfoHolderRow}>Strength total: <span

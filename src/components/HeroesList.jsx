@@ -27,7 +27,6 @@ class HeroesList extends Component {
     };
 
     handleSquadEditorAddBtnClick = (heroe) => {
-        console.log('handleFilterChange from HeroesList ', heroe)
         this.props.handleSquadEditorAddBtnClick(heroe);
     };
 

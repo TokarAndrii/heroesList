@@ -7,6 +7,7 @@ import Button from './shared/Button'
 import Appbar from './shared/appbar/index'
 import Heroesfilter from './Heroesfilter'
 import SquadEditor from './SquadEditor'
+import SavedSquad from './SavedSquad'
 import {getAvailHeroes, getHeroesBySquadEditorIds, getTotal} from '../utils/selectors'
 
 
@@ -30,6 +31,27 @@ class App extends Component {
         isModalOpen: false,
         filter: '',
         squadEditorIds: [],
+        squads: [
+            {
+                id: '1',
+                heroes: [
+                    {
+                        id: "e6e40c5b-dab6-4031-9276-0f65fd1ce9d2",
+                        intelligence: "9",
+                        name: "Batman",
+                        speed: "10",
+                        strength: "7"
+                    },
+                    {
+                        id: "87405676-5cf7-4c33-b7da-024d643812f1",
+                        intelligence: "10",
+                        name: "Super Man",
+                        speed: "9",
+                        strength: "6",
+                    },
+                ],
+            },
+        ],
     };
 
     handleOpenModal = () => this.setState({isModalOpen: true});
@@ -87,16 +109,33 @@ class App extends Component {
     };
 
     countTotalStrength = () =>
-        getTotal(getHeroesBySquadEditorIds([...this.state.heroes],[...this.state.squadEditorIds]),'strength');
+        getTotal(getHeroesBySquadEditorIds([...this.state.heroes], [...this.state.squadEditorIds]), 'strength');
 
     countTotalIntelligence = () =>
-        getTotal(getHeroesBySquadEditorIds([...this.state.heroes],[...this.state.squadEditorIds]),'intelligence');
+        getTotal(getHeroesBySquadEditorIds([...this.state.heroes], [...this.state.squadEditorIds]), 'intelligence');
 
     countTotalSpeed = () =>
-        getTotal(getHeroesBySquadEditorIds([...this.state.heroes],[...this.state.squadEditorIds]),'speed');
+        getTotal(getHeroesBySquadEditorIds([...this.state.heroes], [...this.state.squadEditorIds]), 'speed');
+
+    handleClickSaveBtnSquadEditor = () => {
+        console.log('handleClickSavetBtn from App');
+        this.setState(state => ({
+            squadEditorIds: []
+        }), this.writeToLocalStorage)
+    };
+
+    handleClickResetBtnSquadEditor = () => {
+        console.log('handleClickResetBtn from App');
+        this.setState(state => ({
+            squadEditorIds: []
+        }), this.writeToLocalStorage)
+
+    };
 
     render() {
         const heroes = [...this.state.heroes];
+        const squads = [...this.state.squads];
+        console.log(squads, 'squads from App')
         const {isModalOpen, filter} = this.state;
         const squadEditorIds = [...this.state.squadEditorIds];
         const visibleHeroes = getAvailHeroes(heroes, filter, squadEditorIds);
@@ -110,13 +149,16 @@ class App extends Component {
                 </Appbar>
                 <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}
                             handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
-                <SquadEditor heroes={squadEditorIdsHeroes} onDelete={this.deleteHeroeFromSquadEditor}
-                             countTotalStrength={this.countTotalStrength}
-                             countTotalIntelligence={this.countTotalIntelligence}
-                             countTotalSpeed={this.countTotalSpeed}>
-
+                <SquadEditor
+                    heroes={squadEditorIdsHeroes}
+                    onDelete={this.deleteHeroeFromSquadEditor}
+                    countTotalStrength={this.countTotalStrength}
+                    countTotalIntelligence={this.countTotalIntelligence}
+                    countTotalSpeed={this.countTotalSpeed}
+                    handleClickResetBtn={this.handleClickResetBtnSquadEditor}
+                    handleClickSaveBtn={this.handleClickSaveBtnSquadEditor}>
                 </SquadEditor>
-
+                <SavedSquad squads={squads} allHeroes={heroes}/>
                 <Modal
                     isOpen={isModalOpen}
                     onAfterOpen={this.afterOpenModal}
