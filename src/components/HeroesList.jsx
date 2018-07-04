@@ -52,17 +52,6 @@ class HeroesList extends Component {
             </div>
 
         )
-
-        /*            <div className={styles.listHolder}>
-            <h3>HEROES LIST qnty: {heroes.length}</h3>
-                <ul className={styles.list}>
-                {heroes.map(hero => (
-                    <li key={hero.id} className={styles.listItem}>
-                        <Hero {...hero} {...this.props} onDelete={this.onDelete} onUpdate={this.onUpdate}/>
-                    </li>
-                ))}
-            </ul>
-                </div>*/
     }
 }
 

@@ -5,7 +5,6 @@ import styles from './A.css'
 
 const A = ({isActive, onClick, children}) => {
     const active = isActive ? styles.active : styles.notActive;
-    //const isActive = this.props.isActiveSquad;
     return (
         <a onClick={onClick} className={active}>{children}</a>
     );

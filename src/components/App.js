@@ -7,7 +7,7 @@ import Button from './shared/Button'
 import Appbar from './shared/appbar/index'
 import Heroesfilter from './Heroesfilter'
 import SquadEditor from './SquadEditor'
-import {getAvailHeroes, getHeroesBySquadEditorIds, getTotalStrength} from '../utils/selectors'
+import {getAvailHeroes, getHeroesBySquadEditorIds, getTotal} from '../utils/selectors'
 
 
 Modal.setAppElement('#root');
@@ -86,14 +86,14 @@ class App extends Component {
         }), this.writeToLocalStorage)
     };
 
-    countTotalStrength = () => {
-        const heroes = [...this.state.heroes];
-        const squadEditorIds = [...this.state.squadEditorIds];
-        const heroesStrength = getHeroesBySquadEditorIds(heroes, squadEditorIds);
-        console.log(getTotalStrength(heroesStrength));
-        return getTotalStrength(heroesStrength);
-    };
+    countTotalStrength = () =>
+        getTotal(getHeroesBySquadEditorIds([...this.state.heroes],[...this.state.squadEditorIds]),'strength');
 
+    countTotalIntelligence = () =>
+        getTotal(getHeroesBySquadEditorIds([...this.state.heroes],[...this.state.squadEditorIds]),'intelligence');
+
+    countTotalSpeed = () =>
+        getTotal(getHeroesBySquadEditorIds([...this.state.heroes],[...this.state.squadEditorIds]),'speed');
 
     render() {
         const heroes = [...this.state.heroes];
@@ -111,7 +111,11 @@ class App extends Component {
                 <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}
                             handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
                 <SquadEditor heroes={squadEditorIdsHeroes} onDelete={this.deleteHeroeFromSquadEditor}
-                             countTotalStrength={this.countTotalStrength}></SquadEditor>
+                             countTotalStrength={this.countTotalStrength}
+                             countTotalIntelligence={this.countTotalIntelligence}
+                             countTotalSpeed={this.countTotalSpeed}>
+
+                </SquadEditor>
 
                 <Modal
                     isOpen={isModalOpen}

@@ -16,9 +16,8 @@ export const getAvailHeroes = (heroes, filter, squadEditorIds) => {
     });
 };
 
-export const getTotalStrength = heroes=> {
-    return heroes.reduce((accum, hero)=>{return  accum+=+hero.strength},0)
-};
+export const getTotal= (heroes, pattern)=>
+    heroes.reduce((accum, hero)=>{return  accum+=+hero[pattern]},0);
 
-
-//export const x = 5;
+//eslint need for
+export const x = 5;

@@ -19,11 +19,11 @@ class SquadEditor extends Component {
     };
 
     countTotalIntelligence = () => {
-
+        return this.props.countTotalIntelligence();
     };
 
     countTotalSpeed = () => {
-
+        return this.props.countTotalSpeed();
     };
 
     onDelete = (hero) => {
