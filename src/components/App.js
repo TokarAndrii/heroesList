@@ -51,10 +51,30 @@ class App extends Component {
                     },
                 ],
             },
+            {
+                id: '2',
+                heroes: [
+                    {
+                        id: "a40e8661-3e3b-4cde-bff1-c8d6cf6eb603",
+                        intelligence: "6",
+                        name: "Hellboy ",
+                        speed: "6",
+                        strength: "9"
+                    },
+                    {
+                        id: "d886a120-2a34-4707-8c8f-4871071cf594",
+                        intelligence: "6",
+                        name: "Dynamit",
+                        speed: "8",
+                        strength: "10",
+                    },
+                ],
+            },
         ],
     };
 
     handleOpenModal = () => this.setState({isModalOpen: true});
+
     handleCloseModal = () => this.setState({isModalOpen: false});
 
     componentDidMount() {
@@ -138,21 +158,34 @@ class App extends Component {
 
     render() {
         const heroes = [...this.state.heroes];
+
         const squads = [...this.state.squads];
+
         //console.log(squads, 'squads from App')
+
         const {isModalOpen, filter} = this.state;
+
         const squadEditorIds = [...this.state.squadEditorIds];
+
         const visibleHeroes = getAvailHeroes(heroes, filter, squadEditorIds);
+
         const squadEditorIdsHeroes = getHeroesBySquadEditorIds(heroes, squadEditorIds);
         return (
+
             <div className={styles.appHolder}>
+
                 <Appbar>
+
                     <Heroesfilter filter={filter} onFilterChange={this.handleFilterChange}
                                   className={styles.heroesFilter}/>
+
                     <Button text="Create Heroe" onClick={this.handleOpenModal} className={styles.createHeroBtn}/>
+
                 </Appbar>
+
                 <HeroesList heroes={visibleHeroes} onDelete={this.deleteHeroe} onUpdate={this.updateHeroe}
                             handleSquadEditorAddBtnClick={this.handleSquadEditorAddBtnClick}/>
+
                 <SquadEditor
                     heroes={squadEditorIdsHeroes}
                     onDelete={this.deleteHeroeFromSquadEditor}
@@ -162,7 +195,9 @@ class App extends Component {
                     handleClickResetBtn={this.handleClickResetBtnSquadEditor}
                     handleClickSaveBtn={this.handleClickSaveBtnSquadEditor}>
                 </SquadEditor>
+
                 <SavedSquad squads={squads} allHeroes={heroes} countTotalOfSquad={this.countTotalOfSquad}/>
+
                 <Modal
                     isOpen={isModalOpen}
                     onAfterOpen={this.afterOpenModal}
@@ -171,8 +206,11 @@ class App extends Component {
                     contentLabel="Modal Window">
 
                     <HeroesEditor onFormSubmit={this.addHeroe} buttonText="Add" title="Heroes create form"/>
+
                     <button onClick={this.handleCloseModal} className={styles.closeBtn}>X</button>
+
                 </Modal>
+
             </div>
         );
     }
