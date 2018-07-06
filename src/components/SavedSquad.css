@@ -12,5 +12,23 @@
 }
 
 .savedSquadItem {
+    list-style-type: none;
+}
 
+.headerSquadsNames, .headerSquadsTotals {
+    text-align: left;
+    display: inline-block;
+    width: 43%;
+}
+
+
+
+.credentionalHolder {
+    width: 45%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.counTotalHolder {
+    font-weight: bold;
 }

@@ -124,18 +124,22 @@ class App extends Component {
         }), this.writeToLocalStorage)
     };
 
+
+    countTotalOfSquad = (heroes, pattern) => {
+      return  getTotal(heroes, pattern)
+    };
+
     handleClickResetBtnSquadEditor = () => {
         console.log('handleClickResetBtn from App');
         this.setState(state => ({
             squadEditorIds: []
         }), this.writeToLocalStorage)
-
     };
 
     render() {
         const heroes = [...this.state.heroes];
         const squads = [...this.state.squads];
-        console.log(squads, 'squads from App')
+        //console.log(squads, 'squads from App')
         const {isModalOpen, filter} = this.state;
         const squadEditorIds = [...this.state.squadEditorIds];
         const visibleHeroes = getAvailHeroes(heroes, filter, squadEditorIds);
@@ -158,7 +162,7 @@ class App extends Component {
                     handleClickResetBtn={this.handleClickResetBtnSquadEditor}
                     handleClickSaveBtn={this.handleClickSaveBtnSquadEditor}>
                 </SquadEditor>
-                <SavedSquad squads={squads} allHeroes={heroes}/>
+                <SavedSquad squads={squads} allHeroes={heroes} countTotalOfSquad={this.countTotalOfSquad}/>
                 <Modal
                     isOpen={isModalOpen}
                     onAfterOpen={this.afterOpenModal}

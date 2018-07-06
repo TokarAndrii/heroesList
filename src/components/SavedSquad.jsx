@@ -5,23 +5,43 @@ import styles from './SavedSquad.css'
 
 
 export default class SavedSquad extends Component {
-    render() {
-        /*        const squads = ([...this.props.squads]);
-                const allHeroes = this.props.allHeroes;
-                const heroes = getHeroesBySquadEditorIds(allHeroes,squads.heroesId);*/
+    countTotalSpeed = () => {
         const squads = (this.props.squads);
-        console.log(squads, "squads from SavedSquad");
+        const heroes = [...squads[0].heroes];
+        console.log(heroes)
+        //this.props.getTotal(heroes,'speed');
+    };
+
+    render() {
+        const squads = (this.props.squads);
+        //console.log(squads, "squads from SavedSquad");
         console.log(squads[0].heroes, "heroes from SavedSquad");
         const heroes = [...squads[0].heroes];
+        const countTotalStrength = this.props.countTotalOfSquad(heroes, "strength");
+        const countTotalSpeed = this.props.countTotalOfSquad(heroes, "speed");
+        const countTotalIntelligence = this.props.countTotalOfSquad(heroes, "intelligence");
+
         return (
             <div className={styles.savedSquadHolder}>
                 <h3 className={styles.title}>Saved Squads</h3>
                 {squads.map((squad, index) => (
                     <ul className={styles.savedSquadList}>
-                        <h3>Heroes</h3>
+
                         <li key={squads[index].id} className={styles.savedSquadItem}>
-                            <Squad heroes={heroes}/>
+                            <div>
+                                <h3 className={styles.headerSquadsNames}>Heroes</h3>
+                                <h3 className={styles.headerSquadsTotals}>Totals of Squad</h3>
+                            </div>
+                            <div className={styles.credentionalHolder}>
+                                <Squad heroes={heroes}/>
+                            </div>
+                            <div className={styles.credentionalHolder}>
+                                <p>Total Speed: <span className={styles.counTotalHolder}>{countTotalSpeed}</span></p>
+                                <p>Total Strength: <span className={styles.counTotalHolder}>{countTotalStrength}</span></p>
+                                <p>Total Intelligence: <span className={styles.counTotalHolder}>{countTotalIntelligence}</span></p>
+                            </div>
                         </li>
+
                     </ul>
 
                 ))}

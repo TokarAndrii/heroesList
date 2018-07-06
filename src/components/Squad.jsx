@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Hero from './HeroAtSquad'
+import styles from './Squad.css'
 //import PropTypes from 'prop-types'
 
 export default class Squad extends Component {
@@ -14,7 +15,7 @@ export default class Squad extends Component {
         }));
 
         return (
-            <div>
+            <div className={styles.squadHolder}>
                 {heroes.map(hero => (
                     <li key={hero.id}>
                         <Hero name={hero.name}/>
