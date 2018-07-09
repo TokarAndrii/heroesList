@@ -1,30 +1,35 @@
 import React, {Component} from 'react'
-import Squad from './Squad'
 import styles from './SavedSquad.css'
-import Button from './shared/Button'
 import SquadsList from './SquadsList'
-
 
 
 export default class SavedSquad extends Component {
 
+    countTotalOfSquad = (heroes, pattern) => {
+        return  this.props.countTotalOfSquad;
+    };
+
     render() {
         const squads = [...this.props.squads];
-        const heroes = [...squads[1].heroes];
-
-        console.log(squads, "squads from SavedSquad");
-        //console.log(squads[0].heroes, "heroes from SavedSquad");
+        const heroes = [...this.props.heroes];
 
         //methods for coun totals characteristics of heroes
-        const countTotalStrength = this.props.countTotalOfSquad(heroes, "strength");
+/*        const countTotalStrength = this.props.countTotalOfSquad(heroes, "strength");
 
         const countTotalSpeed = this.props.countTotalOfSquad(heroes, "speed");
 
-        const countTotalIntelligence = this.props.countTotalOfSquad(heroes, "intelligence");
+        const countTotalIntelligence = this.props.countTotalOfSquad(heroes, "intelligence");*/
+
 
         return (
             <div className={styles.savedSquadHolder}>
-                <SquadsList squads={squads}/>
+                <SquadsList
+                    squads={squads}
+/*                    countTotalStrength={countTotalStrength}
+                    countTotalIntelligence={countTotalIntelligence}
+                    countTotalSpeed={countTotalSpeed} */
+                    countTotalOfSquad={this.countTotalOfSquad()}
+                />
             </div>
         );
 

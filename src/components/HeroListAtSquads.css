@@ -1,0 +1,11 @@
+.statsHolder, .namesHolder, .heroesNamesTitle {
+    padding-left: 25%;
+}
+
+.statsHolderItem {
+    font-weight: normal;
+}
+
+.heroesNamesTitle, .heroesStatsTitle {
+    color: blueviolet;
+}

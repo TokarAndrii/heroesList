@@ -1,7 +1,8 @@
 import React from 'react'
+import styles from './HeroAtSquad.css'
 
 const HeroAtSquad = ({name}) => (
-    <div>{name}</div>
+    <span className={styles.heroNameHoldre}>{name}</span>
 );
 
 export default HeroAtSquad
