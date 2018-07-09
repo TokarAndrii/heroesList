@@ -5,6 +5,7 @@
     align-items: flex-start;
     flex-wrap: wrap;
     padding-top: 0;
+    margin-top: -20px;
 }
 
 .closeBtn {

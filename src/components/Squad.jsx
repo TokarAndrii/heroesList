@@ -19,8 +19,6 @@ export default class Squad extends Component {
 
     render() {
 
-
-        //const {countTotalStrength,countTotalSpeed,countTotalIntelligence} = this.props;
         const countTotalOfSquad = this.props;
 
 

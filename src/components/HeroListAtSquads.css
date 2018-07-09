@@ -9,3 +9,7 @@
 .heroesNamesTitle, .heroesStatsTitle {
     color: blueviolet;
 }
+
+.deleteBtn {
+    margin-left: 60px;
+}

@@ -99,10 +99,10 @@ class App extends Component {
     countTotalSpeed = () =>
         getTotal(getHeroesBySquadEditorIds([...this.state.heroes], [...this.state.squadEditorIds]), 'speed');
 
-    handleClickSaveBtnSquadEditor = () => {
+    handleClickSaveBtnSquadEditor = (squad) => {
         console.log('handleClickSavetBtn from App');
         this.setState(state => ({
-            squadEditorIds: []
+            squads: [...state.squads, squad]
         }), this.writeToLocalStorage)
     };
 

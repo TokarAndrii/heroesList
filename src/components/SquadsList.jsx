@@ -10,7 +10,6 @@ export default class SquadsList extends Component {
     render() {
         const squads = (this.props.squads);
 
-        //const {countTotalStrength,countTotalSpeed,countTotalIntelligence} = this.props;
         const countTotalOfSquad = this.props;
 
         return (
@@ -20,9 +19,6 @@ export default class SquadsList extends Component {
                         <Squad
                             squad={current}
                             className={styles.squad}
-/*                            countTotalSpeed={countTotalSpeed}
-                            countTotalIntelligence={countTotalIntelligence}
-                            countTotalStrength={countTotalStrength}*/
                             countTotalOfSquad={this.countTotalOfSquad()}
                         />
                     </li>

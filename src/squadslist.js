@@ -37,6 +37,13 @@ export default [
                 speed: "8",
                 strength: "10",
             },
+            {
+                id: "80a75890-2388-48ca-a3b6-48ce3a20d50e",
+                intelligence: "8",
+                name: "X-Man",
+                speed: "8",
+                strength: "8",
+            },
         ],
     },
 ];

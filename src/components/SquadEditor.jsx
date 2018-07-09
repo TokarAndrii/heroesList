@@ -2,13 +2,23 @@ import React, {Component} from 'react'
 import styles from './SquadEditor.css'
 import HeroesList from './HeroesList'
 import Button from './shared/Button'
+import { v4 } from "uuid"
+
+const INITIAL_STATE = {
+    id: v4(),
+    heroes: [],
+};
 
 
 class SquadEditor extends Component {
 
     handleClickSaveBtn = () => {
         console.log('handleClickSavetBtn from SquadEditor');
-        this.props.handleClickSaveBtn();
+        const heroes = this.props.heroes;
+        const squad = {...INITIAL_STATE,heroes}
+        this.props.handleClickSaveBtn(squad);
+        this.setState({ ...INITIAL_STATE });
+        this.props.handleClickResetBtn();
     };
 
     handleClickResetBtn = () => {
