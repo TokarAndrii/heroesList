@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styles from './Squad.css'
 import HeroListAtSquads from './HeroListAtSquads'
+import Button from './shared/Button'
 //import PropTypes from 'prop-types'
 
 export default class Squad extends Component {
@@ -16,11 +17,13 @@ export default class Squad extends Component {
     countTotalSpeed = () =>
         this.props.countTotalOfSquad(this.heroes,"speed");
 
+    handleDeleteSquadBtn = ()=> {
+      console.log('handleDeleteSquadBtn from Squad');
+      return this.props.handleDeleteSquad;
+    };
+
 
     render() {
-
-        const countTotalOfSquad = this.props;
-
 
         return (
             <div className={styles.squadHolder}>
@@ -30,6 +33,7 @@ export default class Squad extends Component {
                     countTotalIntelligence={this.countTotalIntelligence()}
                     countTotalSpeed={this.countTotalSpeed()}
                 />
+                <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn()}/>
             </div>
         )
     }

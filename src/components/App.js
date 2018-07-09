@@ -108,7 +108,7 @@ class App extends Component {
 
 
     countTotalOfSquad = (heroes, pattern) => {
-      return  getTotal(heroes, pattern)
+        return getTotal(heroes, pattern)
     };
 
     handleClickResetBtnSquadEditor = () => {
@@ -116,6 +116,13 @@ class App extends Component {
         this.setState(state => ({
             squadEditorIds: []
         }), this.writeToLocalStorage)
+    };
+
+    handleDeleteSquad = squad => {
+        console.log('handleDeleteSquad from App');
+/*        this.setState(state => ({
+            squads: state.squads.filter(index => index !== squad.id)
+        }), this.writeToLocalStorage);*/
     };
 
     render() {
@@ -158,7 +165,11 @@ class App extends Component {
                     handleClickSaveBtn={this.handleClickSaveBtnSquadEditor}>
                 </SquadEditor>
 
-                <SavedSquad squads={squads} heroes={heroes} countTotalOfSquad={this.countTotalOfSquad}/>
+                <SavedSquad
+                    squads={squads}
+                    heroes={heroes}
+                    countTotalOfSquad={this.countTotalOfSquad}
+                    handleDeleteSquad={this.handleDeleteSquad}/>
 
                 <Modal
                     isOpen={isModalOpen}

@@ -6,29 +6,23 @@ import SquadsList from './SquadsList'
 export default class SavedSquad extends Component {
 
     countTotalOfSquad = (heroes, pattern) => {
-        return  this.props.countTotalOfSquad;
+        return this.props.countTotalOfSquad;
     };
+    handleDeleteSquad = () => {
+        console.log('handleDeleteSquad from SavedSquad');
+        return this.props.handleDeleteSquad;
+    };
+
 
     render() {
         const squads = [...this.props.squads];
-        const heroes = [...this.props.heroes];
-
-        //methods for coun totals characteristics of heroes
-/*        const countTotalStrength = this.props.countTotalOfSquad(heroes, "strength");
-
-        const countTotalSpeed = this.props.countTotalOfSquad(heroes, "speed");
-
-        const countTotalIntelligence = this.props.countTotalOfSquad(heroes, "intelligence");*/
-
 
         return (
             <div className={styles.savedSquadHolder}>
                 <SquadsList
                     squads={squads}
-/*                    countTotalStrength={countTotalStrength}
-                    countTotalIntelligence={countTotalIntelligence}
-                    countTotalSpeed={countTotalSpeed} */
                     countTotalOfSquad={this.countTotalOfSquad()}
+                    handleDeleteSquad={this.handleDeleteSquad()}
                 />
             </div>
         );

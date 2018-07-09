@@ -6,11 +6,14 @@ export default class SquadsList extends Component {
     countTotalOfSquad = (heroes, pattern) => {
         return  this.props.countTotalOfSquad;
     };
+    handleDeleteSquad = ()=> {
+        console.log('handleDeleteSquad from SquadsList');
+        return this.props.handleDeleteSquad;
+    };
+
 
     render() {
         const squads = (this.props.squads);
-
-        const countTotalOfSquad = this.props;
 
         return (
             <div>
@@ -20,6 +23,7 @@ export default class SquadsList extends Component {
                             squad={current}
                             className={styles.squad}
                             countTotalOfSquad={this.countTotalOfSquad()}
+                            handleDeleteSquad={this.handleDeleteSquad()}
                         />
                     </li>
                 ))}

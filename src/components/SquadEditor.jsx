@@ -5,7 +5,7 @@ import Button from './shared/Button'
 import { v4 } from "uuid"
 
 const INITIAL_STATE = {
-    id: v4(),
+    id: "",
     heroes: [],
 };
 
@@ -15,7 +15,7 @@ class SquadEditor extends Component {
     handleClickSaveBtn = () => {
         console.log('handleClickSavetBtn from SquadEditor');
         const heroes = this.props.heroes;
-        const squad = {...INITIAL_STATE,heroes}
+        const squad = {...INITIAL_STATE,heroes,id: v4()};
         this.props.handleClickSaveBtn(squad);
         this.setState({ ...INITIAL_STATE });
         this.props.handleClickResetBtn();

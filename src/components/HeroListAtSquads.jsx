@@ -1,12 +1,8 @@
 import React, {Component} from 'react'
 import HeroAtSquad from './HeroAtSquad'
-import Button from './shared/Button'
 import styles from './HeroListAtSquads.css'
 
 class HeroListAtSquads extends Component {
-    handleDeleteSquadBtn = () => {
-        console.log('handleDeleteSquadBtn clicked!!')
-    };
 
     render() {
         const heroes = this.props.heroes;
@@ -33,8 +29,7 @@ class HeroListAtSquads extends Component {
                         </li>
                     </div>
                 ))}
-                <div className={styles.deleteBtn}><Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/>
-                </div>
+                {/*<div className={styles.deleteBtn}><Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/></div>*/}
 
             </div>
         )
