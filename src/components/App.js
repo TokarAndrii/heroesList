@@ -120,9 +120,12 @@ class App extends Component {
 
     handleDeleteSquad = squad => {
         console.log('handleDeleteSquad from App');
-/*        this.setState(state => ({
-            squads: state.squads.filter(index => index !== squad.id)
-        }), this.writeToLocalStorage);*/
+        console.log(squad, 'squad from app handleDeleteSquad');
+        this.setState(state => ({
+            squads: state.squads.filter(index => index.id !== squad.id)
+        }), this.writeToLocalStorage);
+
+
     };
 
     render() {

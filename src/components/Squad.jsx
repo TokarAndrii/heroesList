@@ -17,9 +17,10 @@ export default class Squad extends Component {
     countTotalSpeed = () =>
         this.props.countTotalOfSquad(this.heroes,"speed");
 
-    handleDeleteSquadBtn = ()=> {
+    handleDeleteSquadBtn = (squad)=> {
       console.log('handleDeleteSquadBtn from Squad');
-      return this.props.handleDeleteSquad;
+      console.log(this.props.squad, "this.props");
+      return this.props.handleDeleteSquad(this.props.squad);
     };
 
 
@@ -33,7 +34,7 @@ export default class Squad extends Component {
                     countTotalIntelligence={this.countTotalIntelligence()}
                     countTotalSpeed={this.countTotalSpeed()}
                 />
-                <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn()}/>
+                <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/>
             </div>
         )
     }
