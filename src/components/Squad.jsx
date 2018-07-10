@@ -34,7 +34,10 @@ export default class Squad extends Component {
                     countTotalIntelligence={this.countTotalIntelligence()}
                     countTotalSpeed={this.countTotalSpeed()}
                 />
-                <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/>
+                <div className={styles.deleteBtnHolder}>
+                    <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/>
+                </div>
+
             </div>
         )
     }
