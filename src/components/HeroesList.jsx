@@ -9,13 +9,9 @@ class HeroesList extends Component {
 
     static propTypes = {
         heroes: PropTypes.array.isRequired,
-        onDelete: PropTypes.func,
-        onUpdate: PropTypes.func,
-        handleSquadEditorAddBtnClick: PropTypes.func,
-        isActiveInfo: PropTypes.bool,
-        isActiveTrash: PropTypes.bool,
-        isActiveSquad: PropTypes.bool,
-        isActiveEdit: PropTypes.bool,
+        onDelete: PropTypes.func.isRequired,
+        onUpdate: PropTypes.func.isRequired,
+        handleSquadEditorAddBtnClick: PropTypes.func.isRequired,
     };
 
     onDelete = (hero) => {
@@ -29,6 +25,7 @@ class HeroesList extends Component {
     handleSquadEditorAddBtnClick = (heroe) => {
         this.props.handleSquadEditorAddBtnClick(heroe);
     };
+
 
     render() {
         const heroes = ([...this.props.heroes]);

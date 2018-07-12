@@ -3,6 +3,7 @@ import Input from './shared/Input'
 import Button from './shared/Button'
 import styles from './HeroesEditor.css'
 import { v4 } from "uuid"
+import PropTypes from 'prop-types';
 
 
 const INITIAL_STATE = {
@@ -28,6 +29,13 @@ class HeroesEditor extends Component {
 
         this.setState({ ...INITIAL_STATE });
     };
+
+    static propTypes = {
+        onFormSubmit: PropTypes.func.isRequired,
+        buttonText: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+    };
+
 
 
 

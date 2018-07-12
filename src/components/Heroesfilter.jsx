@@ -7,6 +7,7 @@ class Heroesfilter extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         onFilterChange: PropTypes.func.isRequired,
+        className: PropTypes.string.isRequired,
     };
 
     handleChange = e => {

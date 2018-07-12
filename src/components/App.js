@@ -112,15 +112,12 @@ class App extends Component {
     };
 
     handleClickResetBtnSquadEditor = () => {
-        console.log('handleClickResetBtn from App');
         this.setState(state => ({
             squadEditorIds: []
         }), this.writeToLocalStorage)
     };
 
     handleDeleteSquad = squad => {
-        console.log('handleDeleteSquad from App');
-        console.log(squad, 'squad from app handleDeleteSquad');
         this.setState(state => ({
             squads: state.squads.filter(index => index.id !== squad.id)
         }), this.writeToLocalStorage);
@@ -132,8 +129,6 @@ class App extends Component {
         const heroes = [...this.state.heroes];
 
         const squads = [...this.state.squads];
-
-        //console.log(squads, 'squads from App')
 
         const {isModalOpen, filter} = this.state;
 

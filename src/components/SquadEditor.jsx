@@ -3,6 +3,7 @@ import styles from './SquadEditor.css'
 import HeroesList from './HeroesList'
 import Button from './shared/Button'
 import { v4 } from "uuid"
+import PropTypes from 'prop-types'
 
 const INITIAL_STATE = {
     id: "",
@@ -13,7 +14,6 @@ const INITIAL_STATE = {
 class SquadEditor extends Component {
 
     handleClickSaveBtn = () => {
-        console.log('handleClickSavetBtn from SquadEditor');
         const heroes = this.props.heroes;
         const squad = {...INITIAL_STATE,heroes,id: v4()};
         this.props.handleClickSaveBtn(squad);
@@ -22,7 +22,6 @@ class SquadEditor extends Component {
     };
 
     handleClickResetBtn = () => {
-        console.log('handleClickResetBtn from SquadEditor')
         this.props.handleClickResetBtn();
     };
 
@@ -41,6 +40,17 @@ class SquadEditor extends Component {
     onDelete = (hero) => {
         return this.props.onDelete(hero)
     };
+
+    static propTypes = {
+        heroes: PropTypes.array.isRequired,
+        onDelete: PropTypes.func.isRequired,
+        countTotalStrength: PropTypes.func.isRequired,
+        countTotalIntelligence: PropTypes.func.isRequired,
+        countTotalSpeed: PropTypes.func.isRequired,
+        handleClickResetBtn: PropTypes.func.isRequired,
+        handleClickSaveBtn: PropTypes.func.isRequired,
+    };
+
 
 
     render() {

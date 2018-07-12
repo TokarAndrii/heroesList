@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
 import Squad from './Squad'
 import styles from './SquadsList.css'
+import PropTypes from 'prop-types'
 
 export default class SquadsList extends Component {
     countTotalOfSquad = (heroes, pattern) => {
         return  this.props.countTotalOfSquad;
     };
     handleDeleteSquad = (squad)=> {
-        console.log('handleDeleteSquad from SquadsList');
         return this.props.handleDeleteSquad(squad);
+    };
+
+    static propTypes = {
+        squads: PropTypes.array.isRequired,
+        countTotalOfSquad: PropTypes.func.isRequired,
+        handleDeleteSquad: PropTypes.func.isRequired,
     };
 
 

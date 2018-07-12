@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Input from './shared/Input'
 import Button from './shared/Button'
 import styles from './HeroesUpdater.css'
+import PropTypes from 'prop-types'
 
 const INITIAL_STATE = {
     id: '',
@@ -34,8 +35,16 @@ class HeroesUpdater extends Component {
         this.setState({ ...INITIAL_STATE });
     };
 
-
-
+    static propTypes = {
+        onFormSubmit: PropTypes.func.isRequired,
+        buttonText: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        strength: PropTypes.string.isRequired,
+        intelligence: PropTypes.string.isRequired,
+        speed: PropTypes.string.isRequired,
+    };
 
 
     render() {

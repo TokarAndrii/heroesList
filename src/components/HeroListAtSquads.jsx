@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import HeroAtSquad from './HeroAtSquad'
 import styles from './HeroListAtSquads.css'
+import PropTypes from 'prop-types'
 
 class HeroListAtSquads extends Component {
 
@@ -29,11 +30,17 @@ class HeroListAtSquads extends Component {
                         </li>
                     </div>
                 ))}
-                {/*<div className={styles.deleteBtn}><Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/></div>*/}
 
             </div>
         )
     }
 }
+
+HeroListAtSquads.propTypes = {
+    heroes: PropTypes.array.isRequired,
+    countTotalStrength: PropTypes.func.isRequired,
+    countTotalIntelligence: PropTypes.func.isRequired,
+    countTotalSpeed: PropTypes.func.isRequired,
+};
 
 export default HeroListAtSquads;

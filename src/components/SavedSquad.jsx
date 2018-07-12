@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styles from './SavedSquad.css'
 import SquadsList from './SquadsList'
+import PropTypes from 'prop-types'
 
 
 export default class SavedSquad extends Component {
@@ -9,7 +10,6 @@ export default class SavedSquad extends Component {
         return this.props.countTotalOfSquad;
     };
     handleDeleteSquad = (squad) => {
-        console.log('handleDeleteSquad from SavedSquad');
         return this.props.handleDeleteSquad(squad);
     };
 
@@ -19,6 +19,7 @@ export default class SavedSquad extends Component {
 
         return (
             <div className={styles.savedSquadHolder}>
+                <h3 className={styles.title}>Saved Squads qnty: {squads.length}</h3>
                 <SquadsList
                     squads={squads}
                     countTotalOfSquad={this.countTotalOfSquad()}
@@ -30,5 +31,11 @@ export default class SavedSquad extends Component {
     }
 }
 
+SavedSquad.propTypes = {
+    squads: PropTypes.array,
+    heroes: PropTypes.array,
+    countTotalOfSquad: PropTypes.func.isRequired,
+    handleDeleteSquad: PropTypes.func.isRequired,
+};
 
-//SavedSquad.propTypes = {};
+

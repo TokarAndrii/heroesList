@@ -30,8 +30,6 @@ class Hero extends Component {
         strength: PropTypes.string.isRequired,
         intelligence: PropTypes.string.isRequired,
         speed: PropTypes.string.isRequired,
-        isActiveInfo: PropTypes.bool,
-        isActiveTrash: PropTypes.bool,
         isActiveSquad: PropTypes.bool,
         isActiveEdit: PropTypes.bool,
     };
