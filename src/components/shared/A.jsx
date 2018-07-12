@@ -4,19 +4,23 @@ import styles from './A.css'
 
 
 const A = ({isActive, onClick, children}) => {
-    const active = isActive ? styles.active : styles.notActive;
-    return (
-        <a onClick={onClick} className={active}>{children}</a>
-    );
+  const active = isActive ? styles.active : styles.notActive;
+  return (
+    // eslint-disable-next-line
+    <a onClick={onClick} className={active}>{children}</a>
+  );
 };
 
 
 A.propTypes = {
-    onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  isActive: PropTypes.bool,
+  children: PropTypes.string,
 };
 
 A.defaultProps = {
-    isActive: true,
+  isActive: true,
+  children: "",
 };
 
 

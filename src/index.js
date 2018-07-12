@@ -6,13 +6,12 @@ import heroesListStart from '../src/heroesList'
 import squadsListStart from '../src/squadslist'
 
 
-const data = localStorage.getItem('myAppDB');//init DB
+const data = localStorage.getItem('myAppDB');// init DB
 if (!data) {
     localStorage.setItem('myAppDB', JSON.stringify({
         heroes: heroesListStart,
         squads: squadsListStart,
     }));
-    console.log(data)
 }
 
 

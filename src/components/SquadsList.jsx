@@ -1,41 +1,38 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import Squad from './Squad'
 import styles from './SquadsList.css'
-import PropTypes from 'prop-types'
+
 
 export default class SquadsList extends Component {
-    countTotalOfSquad = (heroes, pattern) => {
-        return  this.props.countTotalOfSquad;
-    };
-    handleDeleteSquad = (squad)=> {
-        return this.props.handleDeleteSquad(squad);
-    };
+  static propTypes = {
+    squads: PropTypes.arrayOf().isRequired,
+    countTotalOfSquad: PropTypes.func.isRequired,
+    handleDeleteSquad: PropTypes.func.isRequired,
+  };
+  // eslint-disable-next-line
+  countTotalOfSquad = (heroes, pattern) => this.props.countTotalOfSquad;
 
-    static propTypes = {
-        squads: PropTypes.array.isRequired,
-        countTotalOfSquad: PropTypes.func.isRequired,
-        handleDeleteSquad: PropTypes.func.isRequired,
-    };
+  handleDeleteSquad = (squad) => this.props.handleDeleteSquad(squad);
 
 
-    render() {
-        const squads = (this.props.squads);
+  render() {
+    const squads = (this.props.squads);
 
-        return (
-            <div>
-                {squads.map(current => (
-                    <li key={current.id} className={styles.itemHolder}>
-                        <Squad
-                            squad={current}
-                            className={styles.squad}
-                            countTotalOfSquad={this.countTotalOfSquad()}
-                            handleDeleteSquad={this.handleDeleteSquad}
-                        />
-                    </li>
-                ))}
+    return (
+      <div>
+        {squads.map(current => (
+          <li key={current.id} className={styles.itemHolder}>
+            <Squad
+              squad={current}
+              countTotalOfSquad={this.countTotalOfSquad()}
+              handleDeleteSquad={this.handleDeleteSquad}
+            />
+          </li>
+        ))}
 
-            </div>
+      </div>
 
-        )
-    }
+    )
+  }
 }

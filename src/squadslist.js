@@ -1,7 +1,8 @@
+// eslint-disable-next-line
 import {v4} from "uuid"
 
 export default [
-    {
+    {// eslint-disable-next-line
         id: v4(),
         heroes: [
             {
@@ -20,7 +21,7 @@ export default [
             },
         ],
     },
-    {
+    {// eslint-disable-next-line
         id: v4(),
         heroes: [
             {

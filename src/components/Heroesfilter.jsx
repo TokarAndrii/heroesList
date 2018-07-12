@@ -7,7 +7,6 @@ class Heroesfilter extends Component {
     static propTypes = {
         filter: PropTypes.string.isRequired,
         onFilterChange: PropTypes.func.isRequired,
-        className: PropTypes.string.isRequired,
     };
 
     handleChange = e => {
@@ -21,7 +20,7 @@ class Heroesfilter extends Component {
         return (
             <form className={styles.formFilter}>
                 <input placeholder="Filter heroes by content..." name="text" value={filter} onChange={this.handleChange} className={styles.inputFilter}/>
-                <span className={styles.filterIcon}><i className="fas fa-filter"></i></span>
+                <span className={styles.filterIcon}><i className="fas fa-filter" /></span>
             </form>
         )
     }

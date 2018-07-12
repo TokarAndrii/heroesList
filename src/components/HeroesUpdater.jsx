@@ -1,74 +1,71 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import PropTypes from 'prop-types'
 import Input from './shared/Input'
 import Button from './shared/Button'
 import styles from './HeroesUpdater.css'
-import PropTypes from 'prop-types'
+
 
 const INITIAL_STATE = {
-    id: '',
-    name: '',
-    strength: '',
-    intelligence: '',
-    speed: '',
+  id: '',
+  name: '',
+  strength: '',
+  intelligence: '',
+  speed: '',
 };
 
 class HeroesUpdater extends Component {
-    state = {...INITIAL_STATE};
 
-    handleInputChange = e => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({[name]: value});
-    };
+  static propTypes = {
+    onFormSubmit: PropTypes.func.isRequired,
+    buttonText: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  };
+  state = {...INITIAL_STATE};
 
-    handleSubmit = (e) => {
-        e.preventDefault();
+  handleInputChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({[name]: value});
+  };
 
-        const heroe = {...this.state};
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-        const heroeId = this.props.id;
+    const heroe = {...this.state};
 
-        heroe.id = heroeId;
+    const heroeId = this.props.id;
 
-        this.props.onFormSubmit(heroe);
+    heroe.id = heroeId;
 
-        this.setState({ ...INITIAL_STATE });
-    };
+    this.props.onFormSubmit(heroe);
 
-    static propTypes = {
-        onFormSubmit: PropTypes.func.isRequired,
-        buttonText: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        strength: PropTypes.string.isRequired,
-        intelligence: PropTypes.string.isRequired,
-        speed: PropTypes.string.isRequired,
-    };
+    this.setState({...INITIAL_STATE});
+  };
 
 
-    render() {
-        const {name, strength, intelligence, speed} = this.state;
-        const {buttonText, title, } = this.props;
-        return (
-            <div className={styles.holder}>
-                <h3>{title}</h3>
-                <form className={styles.form} onSubmit={this.handleSubmit}>
-                    <Input name="name" type="text" onChange={this.handleInputChange} placeholder="Enter heroe name..."
-                           value={name}/>
-                    <Input name="strength" type="text" onChange={this.handleInputChange}
-                           placeholder="Enter heroe strength..."
-                           value={strength}/>
-                    <Input name="intelligence" type="text" onChange={this.handleInputChange}
-                           placeholder="Enter heroe intelligence..."
-                           value={intelligence}/>
-                    <Input name="speed" type="text" onChange={this.handleInputChange} placeholder="Enter heroe speed..."
-                           value={speed}/>
-                    <Button text={buttonText} type="submit"/>
-                </form>
-            </div>
-        )
-    }
+  render() {
+    const {name, strength, intelligence, speed} = this.state;
+    const {buttonText, title,} = this.props;
+    return (
+      <div className={styles.holder}>
+        <h3>{title}</h3>
+        <form className={styles.form} onSubmit={this.handleSubmit}>
+          <Input name="name" type="text" onChange={this.handleInputChange} placeholder="Enter heroe name..."
+                 value={name}/>
+          <Input name="strength" type="text" onChange={this.handleInputChange}
+                 placeholder="Enter heroe strength..."
+                 value={strength}/>
+          <Input name="intelligence" type="text" onChange={this.handleInputChange}
+                 placeholder="Enter heroe intelligence..."
+                 value={intelligence}/>
+          <Input name="speed" type="text" onChange={this.handleInputChange} placeholder="Enter heroe speed..."
+                 value={speed}/>
+          <Button text={buttonText} type="submit"/>
+        </form>
+      </div>
+    )
+  }
 }
 
 export default HeroesUpdater

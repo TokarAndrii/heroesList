@@ -1,54 +1,56 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import styles from './Squad.css'
 import HeroListAtSquads from './HeroListAtSquads'
 import Button from './shared/Button'
-import PropTypes from 'prop-types'
+
 
 export default class Squad extends Component {
-    heroes = this.props.squad.heroes;
+  static propTypes = {
+    squad: PropTypes.shape({
+      id: PropTypes.string,
+      heroes: PropTypes.array,
+    }),
+    countTotalOfSquad: PropTypes.func.isRequired,
+    handleDeleteSquad: PropTypes.func.isRequired,
+  };
 
-    countTotalStrength = () =>
-        this.props.countTotalOfSquad(this.heroes,"strength");
+  static defaultProps = {
+    squad: {},
+  };
 
-    countTotalIntelligence = () =>
-        this.props.countTotalOfSquad(this.heroes,"intelligence");
+  heroes = this.props.squad.heroes;
 
+  countTotalStrength = () =>
+    this.props.countTotalOfSquad(this.heroes, "strength");
 
-    countTotalSpeed = () =>
-        this.props.countTotalOfSquad(this.heroes,"speed");
-
-    handleDeleteSquadBtn = (squad)=> {
-      return this.props.handleDeleteSquad(this.props.squad);
-    };
-
-    static propTypes = {
-        squad: PropTypes.shape({
-            id: PropTypes.string,
-            heroes: PropTypes.array,
-        }),
-        className: PropTypes.string.isRequired,
-        countTotalOfSquad: PropTypes.func.isRequired,
-        handleDeleteSquad: PropTypes.func.isRequired,
-    };
+  countTotalIntelligence = () =>
+    this.props.countTotalOfSquad(this.heroes, "intelligence");
 
 
-    render() {
+  countTotalSpeed = () =>
+    this.props.countTotalOfSquad(this.heroes, "speed");
 
-        return (
-            <div className={styles.squadHolder}>
-                <HeroListAtSquads
-                    heroes={this.heroes}
-                    countTotalStrength={this.countTotalStrength()}
-                    countTotalIntelligence={this.countTotalIntelligence()}
-                    countTotalSpeed={this.countTotalSpeed()}
-                />
-                <div className={styles.deleteBtnHolder}>
-                    <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/>
-                </div>
+  handleDeleteSquadBtn = () => this.props.handleDeleteSquad(this.props.squad);
 
-            </div>
-        )
-    }
+
+  render() {
+
+    return (
+      <div className={styles.squadHolder}>
+        <HeroListAtSquads
+          heroes={this.heroes}
+          countTotalStrength={this.countTotalStrength()}
+          countTotalIntelligence={this.countTotalIntelligence()}
+          countTotalSpeed={this.countTotalSpeed()}
+        />
+        <div className={styles.deleteBtnHolder}>
+          <Button text="Delete Squad" onClick={this.handleDeleteSquadBtn}/>
+        </div>
+
+      </div>
+    )
+  }
 
 }
 

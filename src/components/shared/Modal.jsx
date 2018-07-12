@@ -57,8 +57,8 @@ export default class Modal extends Component {
             </Backdrop>
         ) : null);
 
-//other way to show on depends isOpen
-        /*isOpen && (
+// other way to show on depends isOpen
+        /* isOpen && (
             <Backdrop>
                 <Content>{children}</Content>
             </Backdrop>
